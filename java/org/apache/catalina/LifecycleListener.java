@@ -18,6 +18,7 @@
 
 package org.apache.catalina;
 
+//tomat生命周期监听接口
 
 /**
  * Interface defining a listener for significant events (including "component
