@@ -4928,6 +4928,7 @@ public class StandardContext extends ContainerBase
         for (ArrayList<Wrapper> list : map.values()) {
             for (Wrapper wrapper : list) {
                 try {
+                    // TODO
                     wrapper.load();
                 } catch (ServletException e) {
                     getLogger().error(sm.getString("standardContext.loadOnStartup.loadException",
@@ -5102,6 +5103,7 @@ public class StandardContext extends ContainerBase
                 }
 
                 // Notify our interested LifecycleListeners
+                //触发生命周期事件，调度了ContextConfig,读取web.xml
                 fireLifecycleEvent(Lifecycle.CONFIGURE_START_EVENT, null);
 
                 // Start our child containers, if not already started
@@ -5237,6 +5239,7 @@ public class StandardContext extends ContainerBase
             }
 
             // Load and initialize all "load on startup" servlets
+            //进入wrapper逻辑
             if (ok) {
                 if (!loadOnStartup(findChildren())){
                     log.error(sm.getString("standardContext.servletFail"));

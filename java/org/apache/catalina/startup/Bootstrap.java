@@ -352,6 +352,7 @@ public final class Bootstrap {
         if( catalinaDaemon==null ) init();
 
         Method method = catalinaDaemon.getClass().getMethod("start", (Class [] )null);
+        //调用catalina的start方法
         method.invoke(catalinaDaemon, (Object [])null);
 
     }
@@ -491,7 +492,9 @@ public final class Bootstrap {
                 daemon.stop();
             } else if (command.equals("start")) {
                 daemon.setAwait(true);
+                //初始化
                 daemon.load(args);
+                // 启动
                 daemon.start();
             } else if (command.equals("stop")) {
                 daemon.stopServer(args);
